@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { ChakraProvider, Box, Grid } from '@chakra-ui/react';
+import { ColorModeSwitcher } from './ColorModeSwitcher';
+import Portfolio from './components/Portfolio';
+import MyModal from './components/Modal/Modal';
+import theme from './theme/theme.js';
+
+import PanelContainer from './components/Layout/PanelContainer';
+import PanelContent from './components/Layout/PanelContent';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ChakraProvider theme={theme}>
+      <ColorModeSwitcher justifySelf="flex-end" />
+      <PanelContent>
+        <PanelContainer>
+          <Portfolio
+            title={'Projects'}
+            description={'Architects design houses'}
+          />
+          <MyModal />
+        </PanelContainer>
+      </PanelContent>
+    </ChakraProvider>
   );
 }
 
